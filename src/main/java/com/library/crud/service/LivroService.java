@@ -1,5 +1,6 @@
 package com.library.crud.service;
 
+import com.library.crud.DTO.LivroDTO;
 import com.library.crud.model.Livro;
 import com.library.crud.repository.LivroRepository;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,9 @@ public class LivroService {
         livroRepository.deleteById(id);
     }
 
+//    public List<LivroDTO> converteListaLivroParaListaLivroDTO(List<Livro> livros){
+//
+//        return null;
+//    }
 
 }
