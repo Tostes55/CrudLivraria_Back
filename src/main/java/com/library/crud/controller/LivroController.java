@@ -1,5 +1,6 @@
 package com.library.crud.controller;
 
+import com.library.crud.DTO.LivroDTO;
 import com.library.crud.model.Livro;
 import com.library.crud.service.LivroService;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +18,14 @@ public class LivroController {
     }
 
     @GetMapping
-    public List<Livro> buscaLivros(){return livroService.buscaLivros();
+    public List<LivroDTO> buscaLivros(){return livroService.buscaLivros();
     }
 
     @PostMapping
-    public void cadastrarLivro(@RequestBody Livro livro){livroService.cadastraLivro(livro);}
+    public void cadastrarLivro(@RequestBody LivroDTO livroDTO){livroService.cadastraLivro(livroDTO);}
 
     @PutMapping("/{id}")
-    public void atualizaLivro(@RequestBody Livro livro,@PathVariable Long id ){livroService.atualizaLivro(livro, id);}
+    public void atualizaLivro(@RequestBody LivroDTO livroDTO,@PathVariable Long id ){livroService.atualizaLivro(livroDTO, id);}
 
     @DeleteMapping("/{id}")
     public void apagaLivro(@PathVariable Long id){livroService.apagaLivro(id);}

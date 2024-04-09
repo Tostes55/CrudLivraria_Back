@@ -6,6 +6,7 @@ import com.library.crud.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LivroService {
@@ -15,22 +16,47 @@ public class LivroService {
     public LivroService(LivroRepository livroRepository) {this.livroRepository = livroRepository;
     }
 
-    public List<Livro> buscaLivros(){return livroRepository.findAll();
+    public List<LivroDTO> buscaLivros(){
+        List<Livro> listaLivrosEncontrados = livroRepository.findAll();
+        return converterListaLivroParaListaLivroDTO(listaLivrosEncontrados);
     }
 
-    public void cadastraLivro(Livro livro){livroRepository.save(livro); }
+    public void cadastraLivro(LivroDTO livroDTO){
+        Livro livro = converteLivroDTOParaLivro(livroDTO);
+        livroRepository.save(livro);
+    }
 
-    public void atualizaLivro(Livro livro, Long id){
+    public void atualizaLivro(LivroDTO livroDTO, Long id){
+        Livro livro = converteLivroDTOParaLivro(livroDTO);
         livro.id=id;
-        livroRepository.save(livro);}
+        livroRepository.save(livro);
+    }
 
     public void apagaLivro(Long id){
         livroRepository.deleteById(id);
     }
 
-//    public List<LivroDTO> converteListaLivroParaListaLivroDTO(List<Livro> livros){
-//
-//        return null;
-//    }
+    public LivroDTO converteLivroParaLivroDTO(Livro livro){
+
+        LivroDTO livroDTO = new LivroDTO();
+        livroDTO.setId(livro.id);
+        livroDTO.setAutor(livro.autor);
+        livroDTO.setTitulo(livro.titulo);
+
+        return livroDTO;
+    }
+
+    private List<LivroDTO> converterListaLivroParaListaLivroDTO(List<Livro> listaDeLivros){
+        return listaDeLivros.stream().map(this::converteLivroParaLivroDTO).collect(Collectors.toList());
+    }
+
+    public Livro converteLivroDTOParaLivro(LivroDTO livroDTO){
+        Livro livro = new Livro();
+        livro.setId(livroDTO.id);
+        livro.setAutor(livroDTO.autor);
+        livro.setTitulo(livroDTO.titulo);
+
+        return livro;
+    }
 
 }

@@ -26,5 +26,15 @@ public class Livro {
     public String autor;
 
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
 }
