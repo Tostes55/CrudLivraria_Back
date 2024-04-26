@@ -10,8 +10,6 @@ import lombok.Setter;
 @Table(name = "LIVRO")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Livro {
 
     @Id
@@ -24,6 +22,15 @@ public class Livro {
 
     @Column(name = "AUTOR")
     public String autor;
+
+    public Livro() {
+    }
+
+    public Livro(Long id, String titulo, String autor) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+    }
 
 
     public void setId(Long id) {

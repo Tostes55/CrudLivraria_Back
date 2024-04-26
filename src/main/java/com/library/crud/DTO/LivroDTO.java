@@ -13,6 +13,15 @@ public class LivroDTO {
 
     public String autor;
 
+    public LivroDTO() {
+    }
+
+    public LivroDTO(Long id, String titulo, String autor) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

@@ -46,7 +46,7 @@ public class LivroService {
         return livroDTO;
     }
 
-    private List<LivroDTO> converterListaLivroParaListaLivroDTO(List<Livro> listaDeLivros){
+    public List<LivroDTO> converterListaLivroParaListaLivroDTO(List<Livro> listaDeLivros){
         return listaDeLivros.stream().map(this::converteLivroParaLivroDTO).collect(Collectors.toList());
     }
 

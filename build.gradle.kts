@@ -29,6 +29,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	runtimeOnly("com.h2database:h2")
 	testImplementation ("com.h2database:h2")
+	testImplementation ("org.junit.jupiter:junit-jupiter-api")
+	testImplementation("org.hamcrest:hamcrest-core:1.3")
 }
 
 tasks.withType<Test> {
