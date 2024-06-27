@@ -24,21 +24,21 @@ public class LivroController {
     }
 
     @PostMapping
-//    public void cadastrarLivro(@RequestBody LivroDTO livroDTO){livroService.cadastraLivro(livroDTO);}
     public ResponseEntity<String> cadastrarLivro(@RequestBody LivroDTO livroDTO) {
         livroService.cadastraLivro(livroDTO);
         return new ResponseEntity<>("Livro Cadastrado com Sucesso", HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    //public void atualizaLivro(@RequestBody LivroDTO livroDTO,@PathVariable Long id ){livroService.atualizaLivro(livroDTO, id);}
     public ResponseEntity<String> atualizaLivro(@RequestBody LivroDTO livroDTO, @PathVariable Long id){livroService.atualizaLivro(livroDTO,id);
         return new ResponseEntity<>("Livro Atualizado com Sucesso", HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
-    public void apagaLivro(@PathVariable Long id){livroService.apagaLivro(id);}
-
+    //public void apagaLivro(@PathVariable Long id){livroService.apagaLivro(id);}
+    public ResponseEntity<String> apagaLivro(@PathVariable Long id){livroService.apagaLivro(id);
+        return new ResponseEntity<>("Livro removido com sucesso", HttpStatus.NO_CONTENT);
+    }
 
 
 }
