@@ -21,9 +21,10 @@ public class LivroService {
         return converterListaLivroParaListaLivroDTO(listaLivrosEncontrados);
     }
 
-    public void cadastraLivro(LivroDTO livroDTO){
+    public Long cadastraLivro(LivroDTO livroDTO){
         Livro livro = converteLivroDTOParaLivro(livroDTO);
-        livroRepository.save(livro);
+        Livro livroSalvo = livroRepository.save(livro);
+        return livroSalvo.getId();
     }
 
     public void atualizaLivro(LivroDTO livroDTO, Long id){
