@@ -29,6 +29,7 @@ dependencies {
 	implementation ("org.springframework.boot:spring-boot-starter-validation")
 	implementation ("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 	implementation ("org.springdoc:springdoc-openapi-starter-common:2.3.0")
+	implementation("org.postgresql:postgresql:42.6.0")
 }
 
 tasks.withType<Test> {

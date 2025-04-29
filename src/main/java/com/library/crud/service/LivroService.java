@@ -3,6 +3,8 @@ package com.library.crud.service;
 import com.library.crud.DTO.LivroDTO;
 import com.library.crud.model.Livro;
 import com.library.crud.repository.LivroRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,9 @@ public class LivroService {
     public LivroService(LivroRepository livroRepository) {this.livroRepository = livroRepository;
     }
 
+    private static final Logger logger = LoggerFactory.getLogger(LivroService.class);
+
+
     public List<LivroDTO> buscaLivros(){
         List<Livro> listaLivrosEncontrados = livroRepository.findAll();
         return converterListaLivroParaListaLivroDTO(listaLivrosEncontrados);
@@ -24,6 +29,8 @@ public class LivroService {
     public Long cadastraLivro(LivroDTO livroDTO){
         Livro livro = converteLivroDTOParaLivro(livroDTO);
         Livro livroSalvo = livroRepository.save(livro);
+        logger.info("Livro inserido com sucesso: ID: {}, Título: {}, Autor: {}", livroSalvo.getId(), livroSalvo.getTitulo(), livroSalvo.getAutor());
+
         return livroSalvo.getId();
     }
 

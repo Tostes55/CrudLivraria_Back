@@ -16,7 +16,8 @@ public class LivroController {
 
     private final LivroService livroService;
 
-    public LivroController(LivroService livroService) {this.livroService = livroService;
+    public LivroController(LivroService livroService) {
+        this.livroService = livroService;
     }
 
     @GetMapping
